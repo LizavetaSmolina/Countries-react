@@ -66,8 +66,8 @@ const Info = ({country}) => {
                     <Td>{country[0].demonym}</Td>
                     </Tr>
                     <Tr>
-                    <Td><b>Demonym</b></Td>
-                    <Td>{country[0].demonym}</Td>
+                    <Td><b>Numeric Code</b></Td>
+                    <Td>{country[0].numericCode}</Td>
                     </Tr>
                 </Tbody>
                 <Thead>
