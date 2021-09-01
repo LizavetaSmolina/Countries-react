@@ -1,8 +1,11 @@
 import {useState, useEffect} from 'react'
 import { List, ListItem } from '@chakra-ui/layout';
 import styles from '../styles/Home.module.css'
+import { Link } from "@chakra-ui/react"
 
 const Countries = () => {
+
+    
 
     const [countries, setCountries] = useState([]);
 
@@ -22,7 +25,12 @@ const Countries = () => {
         <div>
             <List spacing={1} className={styles.list}>
                 {countries.map((country) => (
-                    <ListItem key={country.id}>{country.name}</ListItem>
+                    <ListItem key={country.id}>
+                        <Link href={'/' + country.name}>
+                            {country.name}
+                        </Link>
+                        
+                    </ListItem>
                 ))}
             </List>
             
