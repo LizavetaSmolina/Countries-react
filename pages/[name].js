@@ -19,10 +19,28 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async (context) => {
-    const name = context.params.name;
-    const api_url = await fetch(`https://restcountries.eu/rest/v2/name/` + name);
-    const data = await api_url.json();
-
+    var name = context.params.name;
+    var api_url = null;
+    if (context.params.name == 'Åland Islands'){
+        api_url = await fetch(`https://restcountries.eu/rest/v2/callingcode/358`);
+    }
+    else if (context.params.name == 'Saint Barthélemy'){
+        api_url = await fetch(`https://restcountries.eu/rest/v2/callingcode/590`);
+    }
+    else if (context.params.name == 'Réunion'){
+        api_url = await fetch(`https://restcountries.eu/rest/v2/capital/Saint-Denis`);
+    }
+    else if (context.params.name == "Côte d'Ivoire"){
+        api_url = await fetch(`https://restcountries.eu/rest/v2/callingcode/225`);
+    }
+    else if (context.params.name == 'Curaçao'){
+        api_url = await fetch(`https://restcountries.eu/rest/v2/callingcode/599`);
+    }
+    else {
+        api_url = await fetch(`https://restcountries.eu/rest/v2/name/${name}?fullText=true`);
+    }
+        const data = await api_url.json();
+    
     return {
         props: {country: data}
     }
